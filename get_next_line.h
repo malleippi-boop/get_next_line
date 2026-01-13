@@ -6,7 +6,7 @@
 /*   By: frmanett <frmanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 15:53:32 by frmanett          #+#    #+#             */
-/*   Updated: 2026/01/12 18:29:41 by frmanett         ###   ########.fr       */
+/*   Updated: 2026/01/13 17:17:24 by frmanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,9 @@
 
 char	*get_next_line(int fd);
 char	*ft_strchr(const char *s, int c);
-char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strjoin(char const *s1, char const *s2, int i, int j);
 int		ft_strlen(const char *s);
+char	*ft_strdup(const char *s);
 
 
 #endif
