@@ -6,7 +6,7 @@
 /*   By: frmanett <frmanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 15:52:49 by frmanett          #+#    #+#             */
-/*   Updated: 2026/01/14 16:24:16 by frmanett         ###   ########.fr       */
+/*   Updated: 2026/01/14 16:38:58 by frmanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,12 +74,11 @@ static char	*helper(ssize_t check, char *buf, char *str)
 	return (temp);
 }
 
-char	*to_return(ssize_t check, char **str)
+char	*to_return(char **str)
 {
 	char	*temp;
 
-	printf("--%zu--\n", check);
-	if (check == BUFFER_SIZE)
+	if (*str && ft_strchr(*str, '\n'))
 	{
 		temp = copy_line(*str);
 		*str = set_static(*str, 0);
@@ -110,7 +109,6 @@ char	*get_next_line(int fd)
 		if (!buf)
 			return (NULL);
 		check = read(fd, buf, BUFFER_SIZE);
-		printf("||%zu||\n",check);
 		if (check < 0)
 			return (free (buf), NULL);
 		if (check == 0 && !str)
@@ -118,14 +116,12 @@ char	*get_next_line(int fd)
 			free (buf);
 			break ;
 		}
-		printf("||check ==%zu||\n",check);
 		str = helper(check, buf, str);
 	}
-	printf("((%zu))\n",check);
-	return (to_return(check, &str));
+	return (to_return(&str));
 }
 
-int	main(void)
+/*int	main(void)
 {
 	int		fd;
 	int		cicles = 0;
@@ -135,10 +131,11 @@ int	main(void)
 	string = get_next_line(fd);
 	while (string)
 	{
-		printf("", string);
+		printf("[]%s", string);
 		free(string);
 		string = get_next_line(fd);
 	}
 	free(string);
 	return (0);
 }
+*/

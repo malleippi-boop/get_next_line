@@ -6,7 +6,7 @@
 /*   By: frmanett <frmanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 12:34:47 by frmanett          #+#    #+#             */
-/*   Updated: 2026/01/14 16:01:20 by frmanett         ###   ########.fr       */
+/*   Updated: 2026/01/14 16:38:36 by frmanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,11 +74,11 @@ static char	*helper(ssize_t check, char *buf, char *str)
 	return (temp);
 }
 
-char	*to_return(ssize_t check, char **str)
+char	*to_return(char **str)
 {
 	char	*temp;
 
-	if (check == BUFFER_SIZE)
+	if (*str && ft_strchr(*str, '\n'))
 	{
 		temp = copy_line(*str);
 		*str = set_static(*str, 0);
@@ -118,7 +118,7 @@ char	*get_next_line(int fd)
 		}
 		str[fd] = helper(check, buf, str[fd]);
 	}
-	return (to_return(check, &str[fd]));
+	return (to_return(&str[fd]));
 }
 
 /*int	main(void)
