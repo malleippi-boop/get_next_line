@@ -6,7 +6,7 @@
 /*   By: frmanett <frmanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 12:34:47 by frmanett          #+#    #+#             */
-/*   Updated: 2026/01/14 16:38:36 by frmanett         ###   ########.fr       */
+/*   Updated: 2026/01/14 17:22:11 by frmanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,22 +125,23 @@ char	*get_next_line(int fd)
 {
 	int		fd;
 	int		fd2;
-	int		cicles = 0;
 	char	*string;
 	char	*string2; 
 	
-	fd = open("txt.txt", O_RDONLY);
-	fd2 = open("txts.txt", O_RDONLY);
+	fd = open("../../txt.txt", O_RDONLY);
+	fd2 = open("../../txts.txt", O_RDONLY);
 	string = get_next_line(fd);
 	string2 = get_next_line(fd2);
-	while (string)
+	while (string || string2)
 	{
-		printf("[debug--1]%s", string);
-		// printf("[22222---]%s", string2);
+		if (string)
+			printf("1.%s", string);
+		if (string2)
+			printf("2.%s", string2);
 		free(string);
 		free(string2);
 		string = get_next_line(fd);
-		// string2 = get_next_line(fd2);
+		string2 = get_next_line(fd2);
 	}
 	free(string);
 	return (0);

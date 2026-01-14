@@ -6,7 +6,7 @@
 /*   By: frmanett <frmanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 15:52:49 by frmanett          #+#    #+#             */
-/*   Updated: 2026/01/14 16:38:58 by frmanett         ###   ########.fr       */
+/*   Updated: 2026/01/14 17:22:33 by frmanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,10 +124,9 @@ char	*get_next_line(int fd)
 /*int	main(void)
 {
 	int		fd;
-	int		cicles = 0;
 	char	*string;
 
-	fd = open("txt.txt", O_RDONLY);
+	fd = open("../../txt.txt", O_RDONLY);
 	string = get_next_line(fd);
 	while (string)
 	{
@@ -137,5 +136,4 @@ char	*get_next_line(int fd)
 	}
 	free(string);
 	return (0);
-}
-*/
+}*/
