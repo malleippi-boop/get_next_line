@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: frmanett <frmanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/12 15:52:49 by frmanett          #+#    #+#             */
-/*   Updated: 2026/01/14 16:24:16 by frmanett         ###   ########.fr       */
+/*   Created: 2026/01/14 12:34:47 by frmanett          #+#    #+#             */
+/*   Updated: 2026/01/14 16:01:20 by frmanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 static char	*set_static(char *str, int i)
 {
@@ -78,7 +78,6 @@ char	*to_return(ssize_t check, char **str)
 {
 	char	*temp;
 
-	printf("--%zu--\n", check);
 	if (check == BUFFER_SIZE)
 	{
 		temp = copy_line(*str);
@@ -99,46 +98,50 @@ char	*get_next_line(int fd)
 {
 	char		*buf;
 	ssize_t		check;
-	static char	*str = NULL;
+	static char	*str[4096];
 
 	if (fd < 0)
 		return (NULL);
 	check = 1;
-	while (check && !ft_strchr(str, '\n'))
+	while (check && !ft_strchr(str[fd], '\n'))
 	{
 		buf = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
 		if (!buf)
 			return (NULL);
 		check = read(fd, buf, BUFFER_SIZE);
-		printf("||%zu||\n",check);
 		if (check < 0)
 			return (free (buf), NULL);
-		if (check == 0 && !str)
+		if (check == 0 && !str[fd])
 		{
 			free (buf);
 			break ;
 		}
-		printf("||check ==%zu||\n",check);
-		str = helper(check, buf, str);
+		str[fd] = helper(check, buf, str[fd]);
 	}
-	printf("((%zu))\n",check);
-	return (to_return(check, &str));
+	return (to_return(check, &str[fd]));
 }
 
-int	main(void)
+/*int	main(void)
 {
 	int		fd;
+	int		fd2;
 	int		cicles = 0;
 	char	*string;
-
+	char	*string2; 
+	
 	fd = open("txt.txt", O_RDONLY);
+	fd2 = open("txts.txt", O_RDONLY);
 	string = get_next_line(fd);
+	string2 = get_next_line(fd2);
 	while (string)
 	{
-		printf("", string);
+		printf("[debug--1]%s", string);
+		// printf("[22222---]%s", string2);
 		free(string);
+		free(string2);
 		string = get_next_line(fd);
+		// string2 = get_next_line(fd2);
 	}
 	free(string);
 	return (0);
-}
+}*/
