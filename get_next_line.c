@@ -6,7 +6,7 @@
 /*   By: frmanett <frmanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 15:52:49 by frmanett          #+#    #+#             */
-/*   Updated: 2026/01/15 16:41:41 by frmanett         ###   ########.fr       */
+/*   Updated: 2026/01/15 16:48:27 by frmanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ static char	*helper(ssize_t check, char *buf, char *str)
 	return (temp);
 }
 
-char	*to_return(char **str)
+static char	*to_return(char **str)
 {
 	char	*temp;
 
