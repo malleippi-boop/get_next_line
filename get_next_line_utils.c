@@ -6,7 +6,7 @@
 /*   By: frmanett <frmanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 15:53:14 by frmanett          #+#    #+#             */
-/*   Updated: 2026/01/14 12:12:52 by frmanett         ###   ########.fr       */
+/*   Updated: 2026/01/15 16:08:30 by frmanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,13 @@ int	ft_strlen(const char *s)
 	return (count);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2, int i, int j)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
 	int		lens1;
 	int		lens2;
 	char	*join;
+	int		i;
+	int		j;
 
 	if (!s1)
 		return (ft_strdup(s2));
@@ -52,14 +54,12 @@ char	*ft_strjoin(char const *s1, char const *s2, int i, int j)
 	join = malloc(lens1 + lens2 + 1);
 	if (!join)
 		return (NULL);
+	i = -1;
 	while (++i < lens1)
 		join[i] = s1[i];
+	j = 0;
 	while (j < lens2)
-	{
-		join[i] = s2[j];
-		i++;
-		j++;
-	}
+		join[i++] = s2[j++];
 	join[i] = '\0';
 	return (join);
 }

@@ -6,7 +6,7 @@
 /*   By: frmanett <frmanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 12:34:47 by frmanett          #+#    #+#             */
-/*   Updated: 2026/01/14 17:22:11 by frmanett         ###   ########.fr       */
+/*   Updated: 2026/01/15 16:41:59 by frmanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static char	*helper(ssize_t check, char *buf, char *str)
 	char	*temp;
 
 	buf[check] = '\0';
-	temp = ft_strjoin(str, buf, -1, 0);
+	temp = ft_strjoin(str, buf);
 	free (str);
 	free (buf);
 	return (temp);
@@ -100,7 +100,7 @@ char	*get_next_line(int fd)
 	ssize_t		check;
 	static char	*str[4096];
 
-	if (fd < 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	check = 1;
 	while (check && !ft_strchr(str[fd], '\n'))
@@ -145,4 +145,5 @@ char	*get_next_line(int fd)
 	}
 	free(string);
 	return (0);
-}*/
+}
+*/

@@ -6,7 +6,7 @@
 /*   By: frmanett <frmanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 15:52:49 by frmanett          #+#    #+#             */
-/*   Updated: 2026/01/14 17:22:33 by frmanett         ###   ########.fr       */
+/*   Updated: 2026/01/15 16:41:41 by frmanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static char	*set_static(char *str, int i)
 	int		j;
 
 	j = 0;
-	while (str[i] != '\n')
+	while (str[i] != '\n' && str[i] != '\0')
 		i++;
 	while (str[i])
 	{
@@ -68,7 +68,7 @@ static char	*helper(ssize_t check, char *buf, char *str)
 	char	*temp;
 
 	buf[check] = '\0';
-	temp = ft_strjoin(str, buf, -1, 0);
+	temp = ft_strjoin(str, buf);
 	free (str);
 	free (buf);
 	return (temp);
@@ -100,7 +100,7 @@ char	*get_next_line(int fd)
 	ssize_t		check;
 	static char	*str = NULL;
 
-	if (fd < 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	check = 1;
 	while (check && !ft_strchr(str, '\n'))
@@ -136,4 +136,5 @@ char	*get_next_line(int fd)
 	}
 	free(string);
 	return (0);
-}*/
+}
+*/
