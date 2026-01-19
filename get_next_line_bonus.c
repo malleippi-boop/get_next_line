@@ -6,36 +6,33 @@
 /*   By: frmanett <frmanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 12:34:47 by frmanett          #+#    #+#             */
-/*   Updated: 2026/01/15 17:07:19 by frmanett         ###   ########.fr       */
+/*   Updated: 2026/01/19 17:34:59 by frmanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-static char	*set_static(char *str, int i)
+static char	*set_static(char *str)
 {
 	char	*sstr;
+	int		i;
 	int		j;
 
+	i = 0;
+	while (str[i] && str[i] != '\n')
+		i++;
+	if (str[i] == '\n')
+		i++;
 	j = 0;
-	while (str[i] != '\n')
-		i++;
-	while (str[i])
-	{
+	while (str[i + j])
 		j++;
-		i++;
-	}
 	sstr = (char *)malloc((j + 1) * sizeof(char));
 	if (!sstr)
 		return (NULL);
+	j = 0;
+	while (str[i])
+		sstr[j++] = str[i++];
 	sstr[j] = '\0';
-	j--;
-	while (j >= 0)
-	{
-		sstr[j] = str[i];
-		j--;
-		i--;
-	}
 	free (str);
 	return (sstr);
 }
@@ -81,7 +78,7 @@ static char	*to_return(char **str)
 	if (*str && ft_strchr(*str, '\n'))
 	{
 		temp = copy_line(*str);
-		*str = set_static(*str, 0);
+		*str = set_static(*str);
 		return (temp);
 	}
 	else if (*str)

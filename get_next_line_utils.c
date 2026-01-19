@@ -6,7 +6,7 @@
 /*   By: frmanett <frmanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 15:53:14 by frmanett          #+#    #+#             */
-/*   Updated: 2026/01/15 16:08:30 by frmanett         ###   ########.fr       */
+/*   Updated: 2026/01/19 16:46:36 by frmanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,14 @@ char	*ft_strchr(const char *s, int c)
 {
 	if (!s)
 		return (NULL);
-	while (*s != '\0')
+	while (*s)
 	{
 		if (*s == (char)c)
 			return ((char *) s);
 		s++;
 	}
+	if (c == '\0')
+		return ((char *)s);
 	return (NULL);
 }
 
