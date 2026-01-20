@@ -6,7 +6,7 @@
 /*   By: frmanett <frmanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 15:52:49 by frmanett          #+#    #+#             */
-/*   Updated: 2026/01/19 17:35:04 by frmanett         ###   ########.fr       */
+/*   Updated: 2026/01/20 10:44:09 by frmanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,11 @@ static char	*copy_line(char *str)
 	if (!ret)
 		return (NULL);
 	ret[i] = '\0';
-	i--;
+	i--; // devo escludere il \0
 	while (i >= 0)
 	{
 		ret[i] = str[i];
-		i--;
+		i--; // copio al contrario
 	}
 	return (ret);
 }
@@ -80,7 +80,7 @@ static char	*to_return(char **str)
 	if (*str && ft_strchr(*str, '\n'))
 	{
 		temp = copy_line(*str);
-		*str = set_static(*str);
+		*str = set_static(*str);// devo tenere a mente quello che ho letto in piu e che non ho potuto ancora restituire mi servira' x il prossimo ciclo
 		return (temp);
 	}
 	else if (*str)
@@ -96,7 +96,7 @@ static char	*to_return(char **str)
 char	*get_next_line(int fd)
 {
 	char		*buf;
-	ssize_t		check;
+	ssize_t		check;  //quanti caratteri legge la mia f. read
 	static char	*str = NULL;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
