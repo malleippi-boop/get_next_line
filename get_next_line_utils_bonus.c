@@ -6,11 +6,11 @@
 /*   By: frmanett <frmanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 15:53:14 by frmanett          #+#    #+#             */
-/*   Updated: 2026/01/15 16:43:18 by frmanett         ###   ########.fr       */
+/*   Updated: 2026/01/20 12:57:13 by frmanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_strchr(const char *s, int c)
 {

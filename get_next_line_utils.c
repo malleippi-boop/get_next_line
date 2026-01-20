@@ -6,7 +6,7 @@
 /*   By: frmanett <frmanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/12 15:53:14 by frmanett          #+#    #+#             */
-/*   Updated: 2026/01/19 18:54:21 by frmanett         ###   ########.fr       */
+/*   Updated: 2026/01/20 12:57:05 by frmanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	int		j;
 
 	if (!s1)
-		return (ft_strdup(s2)); // al primo ciclo faccio lo strdup del mio buffer che poi diventera' la mia statica
+		return (ft_strdup(s2));
 	if (!s2)
 		return (NULL);
 	lens1 = (ft_strlen (s1));
@@ -56,7 +56,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	join = malloc(lens1 + lens2 + 1);
 	if (!join)
 		return (NULL);
-	i = -1; // per norminette, facendo ++i dopo arriva subito a 0 e parte da li
+	i = -1;
 	while (++i < lens1)
 		join[i] = s1[i];
 	j = 0;
